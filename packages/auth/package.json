@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "main": "src/index.tsx",
-  "exports": { ".": "./src/index.tsx" },
+  "exports": {
+    ".": "./src/index.tsx"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json",
@@ -15,8 +17,8 @@
     "@cbl/types": "*",
     "@cbl/utils": "*",
     "@cbl/api": "*",
-    "@azure/msal-browser": "^3.0.0",
-    "@azure/msal-react": "^2.0.0",
+    "@azure/msal-react": "^3.0.20",
+    "@azure/msal-browser": "^4.0.0",
     "react": "^19.2.7",
     "zustand": "^5.0.3",
     "jwt-decode": "^4.0.0"

@@ -10,7 +10,6 @@ export default defineConfig({
       '@cbl/auth': path.resolve(__dirname, '../../packages/auth/src/index.tsx'),
       '@cbl/api': path.resolve(__dirname, '../../packages/api/src/index.ts'),
       '@cbl/ui': path.resolve(__dirname, '../../packages/ui/src/index.tsx'),
-      '@cbl/ui/': path.resolve(__dirname, '../../packages/ui/'),
     },
   },
 })
