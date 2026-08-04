@@ -102,13 +102,15 @@ export function ProtectedRoute({ children, fallback }: { children: ReactNode; fa
 
 export function usePermissions() {
   const user = useAuthStore((state) => state.user);
+  const hasRole = useAuthStore((state) => state.hasRole);
   const isAdmin = user?.role === 'ADMIN' || user?.role === 'SUPER_ADMIN';
+  
   return {
     userDepartment: user?.department ?? 'All',
     isDepartmentRestricted: () => Boolean(user?.department && !isAdmin && user.department !== 'All'),
-    canViewReports: () => true,
-    canExportCSV: () => true,
-    canAddData: () => true,
-    hasRole: useAuthStore((state) => state.hasRole),
+    canViewReports: () => isAdmin || hasRole(['HSE_MANAGER']),
+    canExportCSV: () => isAdmin || hasRole(['HSE_MANAGER', 'HSE_OFFICER']),
+    canAddData: () => Boolean(user),
+    hasRole,
   };
 }

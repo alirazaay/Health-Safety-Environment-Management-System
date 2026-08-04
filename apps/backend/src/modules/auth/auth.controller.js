@@ -91,52 +91,19 @@ class AuthController {
    */
   verifyEmailExists = asyncHandler(async (req, res) => {
     const { email } = req.body;
-    const user = await authService.verifyEmailExists(email);
+    const meta = { ip: req.ip, userAgent: req.headers['user-agent'] };
 
-    if (user && user.status === true) {
-      const meta = { ip: req.ip, userAgent: req.headers['user-agent'] };
-      const { generateTokenPair } = require('../../shared/utils/tokenGenerator');
-      const tokenRepository = require('../../repositories/token.repository');
-      const { addDays } = require('../../shared/utils/dateHelper');
-      const TokenType = require('../../shared/enums/TokenType');
-      const { sequelize } = require('../../database/connection');
-      const { emitter, EVENTS } = require('../../core/events/emitter');
-      const userRepository = require('../../repositories/user.repository');
+    const result = await authService.ssoLogin(email, meta);
 
-      const tokens = generateTokenPair(user);
-      
-      const transaction = await sequelize.transaction();
-      try {
-        await tokenRepository.revokeAllUserTokens(user.id, TokenType.REFRESH, transaction);
-        await tokenRepository.createRefreshToken(
-          {
-            token: tokens.refreshToken,
-            userId: user.id,
-            expiresAt: addDays(new Date(), 7),
-            ipAddress: meta.ip,
-            userAgent: meta.userAgent,
-          },
-          transaction,
-        );
-        await userRepository.updateLastLogin(user.id, transaction);
-        await transaction.commit();
-        
-        emitter.emit(EVENTS.USER_LOGGED_IN, { userId: user.id, ...meta });
-      } catch (err) {
-        await transaction.rollback();
-        throw err;
-      }
-      
-      const userWithRole = await userRepository.findByIdWithRole(user.id);
-
+    if (result) {
       res.status(HTTP_STATUS.OK).json({
         success: true,
         message: 'User authorized and logged in via SSO',
         data: { 
           authorized: true, 
           email,
-          user: userWithRole.toJSON(),
-          tokens
+          user: result.user,
+          tokens: result.tokens
         }
       });
     } else {

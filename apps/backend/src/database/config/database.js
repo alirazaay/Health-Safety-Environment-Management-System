@@ -10,7 +10,7 @@ module.exports = {
     host: config.db.host,
     port: config.db.port,
     dialect: 'mysql',
-    logging: config.env === 'development' ? console.log : false,
+    logging: config.env === 'development' ? (msg) => require('../../shared/utils/logger').debug(msg) : false,
     pool: {
       min: config.db.poolMin,
       max: config.db.poolMax,

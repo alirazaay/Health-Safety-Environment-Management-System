@@ -163,9 +163,12 @@ class AuthService {
 
     if (!storedToken) throw ApiError.badRequest(MESSAGES.TOKEN_INVALID);
 
+    const { hashPassword } = require('../shared/utils/hashHelper');
+    const hashedPassword = await hashPassword(newPassword);
+
     const transaction = await sequelize.transaction();
     try {
-      await userRepository.update({ password: newPassword }, { id: payload.sub }, { transaction });
+      await userRepository.update({ password: hashedPassword }, { id: payload.sub }, { transaction });
       await tokenRepository.revokeAllUserTokens(payload.sub, TokenType.PASSWORD_RESET, transaction);
       await transaction.commit();
     } catch (err) {
@@ -173,6 +176,7 @@ class AuthService {
       throw err;
     }
   }
+
 
   /**
    * Logout — revoke all refresh tokens.
@@ -188,6 +192,49 @@ class AuthService {
    */
   async verifyEmailExists(email) {
     return userRepository.findOne({ email });
+  }
+
+  /**
+   * Performs an SSO login using just the verified email address.
+   * Updates refresh tokens and last login.
+   * @param {string} email 
+   * @param {object} meta 
+   */
+  async ssoLogin(email, meta = {}) {
+    const user = await this.verifyEmailExists(email);
+    if (!user || user.status !== true) {
+      return null;
+    }
+
+    const tokens = generateTokenPair(user);
+    
+    const transaction = await sequelize.transaction();
+    try {
+      await tokenRepository.revokeAllUserTokens(user.id, TokenType.REFRESH, transaction);
+      await tokenRepository.createRefreshToken(
+        {
+          token: tokens.refreshToken,
+          userId: user.id,
+          expiresAt: addDays(new Date(), 7),
+          ipAddress: meta.ip,
+          userAgent: meta.userAgent,
+        },
+        transaction,
+      );
+      await userRepository.updateLastLogin(user.id, transaction);
+      await transaction.commit();
+      
+      emitter.emit(EVENTS.USER_LOGGED_IN, { userId: user.id, ...meta });
+    } catch (err) {
+      await transaction.rollback();
+      throw err;
+    }
+    
+    const userWithRole = await userRepository.findByIdWithRole(user.id);
+    return {
+      user: userWithRole.toJSON(),
+      tokens
+    };
   }
 }
 
