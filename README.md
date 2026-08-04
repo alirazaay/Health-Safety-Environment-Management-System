@@ -197,20 +197,22 @@ The frontend relies on Microsoft SSO via popup, which will yield an email. It th
    ```bash
    npm install
    ```
-3. Create a `.env` file in the repository root:
+3. Create `apps/management-dashboard/.env`:
    ```env
    VITE_MSAL_CLIENT_ID=your_client_id
    VITE_MSAL_TENANT_ID=your_tenant_id
    VITE_API_URL=http://localhost:5000/api/v1
-   VITE_BYPASS_AUTH=false
+   VITE_BYPASS_AUTH=true
    ```
-4. Start the dev server:
+4. Start the frontend and backend together from the repository root:
    ```bash
    npm run dev
    ```
 5. Open `http://localhost:5173`.
 
-> **Preview only:** Set `VITE_BYPASS_AUTH=true` to inspect the UI without Microsoft login. This uses an in-memory preview identity, does not authenticate API requests, and must be set to `false` for live integration or production.
+> **Preview only:** `VITE_BYPASS_AUTH=true` shows the dashboard with an in-memory preview identity. It does not authenticate API requests. Set it to `false` for Microsoft SSO and production.
+
+The Vite server must bind to `0.0.0.0`; the dashboard script already supplies `--host 0.0.0.0`.
 
 ---
 
@@ -371,14 +373,20 @@ npm install
 
 ### Step 2 — Configure Environment
 ```bash
-cp .env.example .env
-# Then edit .env with your actual values (see section below)
+cp apps/backend/.env.example apps/backend/.env
+# Then edit apps/backend/.env with your actual values (see section below)
 ```
+
+The backend loads its environment from `apps/backend/.env`, not the repository-root `.env`.
+For the local MySQL setup documented here, use `DB_HOST=127.0.0.1` and `DB_PASSWORD=secret`.
+The startup validator also requires `MAIL_HOST`, `MAIL_USER`, and `MAIL_PASSWORD`; development
+placeholder values are sufficient until email features are used.
 
 ### Step 3 — Generate Secure JWT Keys
 ```bash
+cd apps/backend
 node scripts/generateKey.js
-# Copy the generated secrets into your .env file
+# Run from apps/backend, then copy the generated secrets into apps/backend/.env
 ```
 
 ### Step 4 — Create MySQL Database
@@ -388,20 +396,37 @@ CREATE DATABASE cbl_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 ### Step 5 — Run Migrations
 ```bash
-npx sequelize-cli db:migrate
+cd apps/backend
+npx sequelize-cli db:migrate --config src/database/config/database.js
 ```
 
 ### Step 6 — Seed Initial Data (Roles, Permissions, Admin)
 ```bash
-npx sequelize-cli db:seed:all
+cd apps/backend
+npx sequelize-cli db:seed:all --config src/database/config/database.js
 ```
+
+Run these commands from `apps/backend/`. The package migration/seed convenience scripts are
+currently not reliable because the repository is in the middle of a backend refactor.
 
 ### Step 7 — Start Development Server
 ```bash
+# From the repository root
+cd ../..
 npm run dev
 ```
 
-✅ Server starts at: `http://localhost:5000`
+✅ API starts at: `http://localhost:5000`
+
+To run only one service:
+
+```bash
+# From the repository root
+npm run dev --workspace=management-dashboard
+npm run dev --workspace=@cbl/backend
+```
+
+Health check: `http://localhost:5000/api/health`.
 
 ---
 
@@ -426,7 +451,7 @@ mysql -u root -p
 
 #### 2. Update your `.env` file
 ```env
-DB_HOST=localhost
+DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_NAME=cbl_db
 DB_USER=root
@@ -469,7 +494,7 @@ You should see:
 | `Access denied for user 'root'@'localhost'` | Wrong DB password in `.env` | Update `DB_PASSWORD` in `.env` |
 | `ECONNREFUSED 127.0.0.1:3306` | MySQL not running | Start MySQL service |
 | `Unknown database 'cbl_db'` | DB not created yet | Run `CREATE DATABASE cbl_db` |
-| `Config validation error: "MAIL_USER" is required` | Missing env vars | Fill all required fields in `.env` |
+| `Config validation error: "MAIL_HOST" is required` (or `MAIL_USER` / `MAIL_PASSWORD`) | Missing SMTP env vars | Fill all required `MAIL_*` fields in `apps/backend/.env` |
 | `ECONNREFUSED 127.0.0.1:6379` | Redis not running | Start Redis, or it is non-fatal — server still runs |
 | `Port 5000 already in use` | Another process using port | Kill existing process or change `PORT` in `.env` |
 
@@ -477,7 +502,7 @@ You should see:
 
 ## 🔧 Environment Variables
 
-Copy `.env.example` to `.env` and fill in the values:
+From `apps/backend/`, copy `.env.example` to `.env` and fill in the values:
 
 ```env
 # ─── App ──────────────────────────────────────
@@ -543,6 +568,8 @@ LOG_DIR=logs
 ---
 
 ## 📋 Available Scripts
+
+The following commands are backend commands and should be run from `apps/backend/` unless noted otherwise.
 
 | Command | Description |
 |---|---|
