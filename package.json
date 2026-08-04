@@ -1,0 +1,39 @@
+{
+<<<<<<< HEAD
+  "name": "cbl-power-plant-safety-management",
+  "private": true,
+  "packageManager": "npm@10.8.2",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "format": "prettier --write \"**/*.{js,ts,tsx,md,json}\"",
+    "validate": "node scripts/validate-workspace.js && npm run typecheck && npm run lint && npm run test"
+=======
+  "name": "cbl-power-plant",
+  "private": true,
+  "packageManager": "npm@10.8.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+>>>>>>> a30143ace3816812bb4fee4374621904b15b896f
+  },
+  "devDependencies": {
+    "prettier": "^3.9.5",
+    "turbo": "^2.10.5",
+<<<<<<< HEAD
+    "typescript": "^5.9.3"
+=======
+    "typescript": "^7.0.2"
+>>>>>>> a30143ace3816812bb4fee4374621904b15b896f
+  }
+}

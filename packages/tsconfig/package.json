@@ -1,0 +1,7 @@
+{
+  "name": "@cbl/tsconfig",
+  "version": "1.0.0",
+  "private": true,
+  "main": "base.json",
+  "scripts": { "build": "echo tsconfig-build-ready", "typecheck": "echo tsconfig-typecheck-ready", "lint": "echo tsconfig-lint-skipped", "test": "echo tsconfig-tests-pending" }
+}

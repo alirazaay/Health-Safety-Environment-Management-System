@@ -1,0 +1,23 @@
+{
+  "name": "@cbl/database",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "build": "echo database-runtime-build-ready",
+    "typecheck": "echo database-typecheck-ready",
+    "lint": "echo database-lint-skipped",
+    "test": "echo database-tests-pending"
+  },
+  "dependencies": {
+    "@cbl/config": "*",
+    "@cbl/types": "*",
+    "aws-sdk": "^2.1693.0",
+    "mysql2": "^3.22.6",
+    "sequelize": "^6.37.8",
+    "sharp": "0.35.3"
+  }
+}

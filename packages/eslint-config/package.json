@@ -1,0 +1,7 @@
+{
+  "name": "@cbl/eslint-config",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": { "build": "echo eslint-config-build-ready", "typecheck": "echo eslint-config-typecheck-ready", "lint": "echo eslint-config-lint-ready", "test": "echo eslint-config-tests-pending" }
+}

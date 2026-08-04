@@ -1,0 +1,36 @@
+{
+  "name": "@cbl/auth",
+  "version": "1.0.0",
+  "private": true,
+<<<<<<< HEAD
+  "type": "module",
+  "main": "src/index.tsx",
+  "exports": { ".": "./src/index.tsx" },
+  "scripts": { "build": "tsc -p tsconfig.json", "typecheck": "tsc -p tsconfig.json", "lint": "echo auth-lint-skipped", "test": "echo auth-tests-pending" },
+  "dependencies": { "@cbl/types": "*", "@cbl/utils": "*", "react": "^19.2.7", "zustand": "^5.0.3" }
+=======
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@cbl/api": "*",
+    "@azure/msal-browser": "^5.17.3",
+    "@azure/msal-react": "^5.5.4",
+    "zustand": "^4.5.2",
+    "jwt-decode": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@cbl/tsconfig": "*",
+    "@cbl/eslint-config": "*",
+    "typescript": "^5.5.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  }
+>>>>>>> a30143ace3816812bb4fee4374621904b15b896f
+}

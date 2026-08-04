@@ -1,0 +1,10 @@
+{
+  "name": "@cbl/ui",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.tsx",
+  "exports": { ".": "./src/index.tsx", "./src/*": "./src/*" },
+  "scripts": { "build": "tsc -p tsconfig.json", "typecheck": "tsc -p tsconfig.json", "lint": "echo ui-lint-skipped", "test": "echo ui-tests-pending" },
+  "dependencies": { "@cbl/types": "*", "@cbl/utils": "*", "lucide-react": "^0.408.0", "react": "^19.2.7" }
+}
