@@ -5,6 +5,11 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", "build/**", "out/**"]
     },
+<<<<<<< HEAD
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+=======
     "typecheck": {
       "dependsOn": ["^typecheck"]
     },
@@ -14,6 +19,7 @@
     "test": {
       "dependsOn": ["^build"]
     },
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     "dev": {
       "cache": false,
       "persistent": true

@@ -17,8 +17,13 @@
     "ignoreDeprecations": "6.0",
     "paths": {
       "@cbl/api": ["packages/api/src/index.ts"],
+<<<<<<< HEAD
+      "@cbl/auth": ["packages/auth/src/index.ts"],
+      "@cbl/ui": ["packages/ui/src/index.ts"],
+=======
       "@cbl/auth": ["packages/auth/src/index.tsx"],
       "@cbl/ui": ["packages/ui/src/index.tsx"],
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
       "@cbl/ui/*": ["packages/ui/src/*"]
     },
     "noEmit": true,

@@ -53,12 +53,16 @@ const NAV_GROUPS = [
       { title: 'Analytics',          href: '/analytics',          Icon: BarChart3 },
     ],
   },
+<<<<<<< HEAD
+
+=======
   {
     label: 'ADMINISTRATION',
     items: [
       { title: 'Settings',           href: '/settings',           Icon: Settings },
     ],
   },
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 ] as const;
 
 const NOTIF_TYPE = {
@@ -93,7 +97,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
   const handleLogout = () => { logout(); navigate('/login'); };
 
+<<<<<<< HEAD
+  const sidebarWidth = collapsed ? 48 : 240;
+=======
   const sidebarWidth = collapsed ? 64 : 280;
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
   const initials     = getInitials(user?.name);
 
   // Close all overlays when clicking outside
@@ -109,12 +117,32 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           SHELL HEADER — 48px dark bar (SAP Fiori standard)
           ================================================================ */}
       <header
+<<<<<<< HEAD
+        className="fixed top-0 left-0 right-0 z-50 h-12 flex items-center border-b"
+        style={{ backgroundColor: '#FFFFFF', borderColor: '#E8E0C8' }}
+=======
         className="fixed top-0 left-0 right-0 z-50 h-16 flex items-center border-b"
         style={{ backgroundColor: '#FEFCCF', borderColor: '#E2BFB9' }}
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
         onClick={e => e.stopPropagation()}
       >
         {/* Logo + App Identity — in sidebar header zone */}
         <div
+<<<<<<< HEAD
+          className="flex items-center h-full border-r px-4 shrink-0 overflow-hidden"
+          style={{ width: sidebarWidth, transition: 'width 0.2s ease', borderColor: '#E8E0C8', backgroundColor: 'var(--sidebar-bg, #7B1010)' }}
+        >
+          <div className="flex items-center gap-2.5 min-w-0">
+            <img
+              src="/logo.svg"
+              alt="CBL"
+              className="h-10 w-auto shrink-0"
+            />
+            {!collapsed && (
+              <div className="min-w-0">
+                <p className="text-white text-[12px] font-bold leading-[1.2] tracking-wide uppercase whitespace-normal break-words">
+                  Continental Biscuits Limited
+=======
           className="flex items-center h-full border-r px-5 shrink-0 overflow-hidden"
           style={{ width: sidebarWidth, transition: 'width 0.2s ease', borderColor: 'rgba(255,255,255,0.10)', backgroundColor: 'var(--sidebar-bg, #570000)' }}
         >
@@ -131,6 +159,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 </p>
                 <p className="leading-tight truncate font-medium" style={{ color: 'rgba(255,255,255,0.55)', fontSize: 10, letterSpacing: '0.08em' }}>
                   HSE MANAGEMENT
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
                 </p>
               </div>
             )}
@@ -139,7 +168,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
         {/* App title — center */}
         <div className="flex-1 px-6 hidden md:flex items-center overflow-hidden">
+<<<<<<< HEAD
+          <span className="text-[15px] font-bold text-[#2C1810] tracking-tight">
+=======
           <span className="text-[17px] font-semibold text-[#570000] tracking-tight">
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
             HSE Management System
           </span>
         </div>
@@ -340,7 +373,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* ================================================================
           BODY — Sidebar + Main
           ================================================================ */}
+<<<<<<< HEAD
+      <div className="flex flex-1 pt-12">
+=======
       <div className="flex flex-1 pt-16">
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 
         {/* Sidebar spacer (prevents content jump) */}
         <div
@@ -351,11 +388,19 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         {/* ---- LEFT SIDEBAR — Maroon (#7B1010) matching Stitch design ---- */}
         <aside
           className={`
+<<<<<<< HEAD
+            fixed left-0 top-12 bottom-0 flex flex-col z-40
+            transition-all duration-200 ease-in-out
+            ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+          `}
+          style={{ width: sidebarWidth, backgroundColor: 'var(--sidebar-bg, #7B1010)' }}
+=======
             fixed left-0 top-16 bottom-0 flex flex-col z-40
             transition-all duration-200 ease-in-out
             ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
           `}
           style={{ width: sidebarWidth, backgroundColor: 'var(--sidebar-bg, #570000)' }}
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
         >
           {/* Navigation */}
           <nav className="flex-1 overflow-y-auto py-3 hide-scrollbar">
@@ -410,7 +455,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                             color: isActive ? '#FFFFFF' : 'rgba(255,255,255,0.65)' }}
                         />
                         {!collapsed && (
+<<<<<<< HEAD
+                          <span className="truncate leading-snug pb-[1px]">{item.title}</span>
+=======
                           <span className="truncate leading-none">{item.title}</span>
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
                         )}
                       </NavLink>
                     );
@@ -451,7 +500,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                   title={collapsed ? item.title : undefined}
                 >
                   <item.Icon style={{ width: 16, height: 16, color: isActive ? '#FFFFFF' : 'rgba(255,255,255,0.65)', flexShrink: 0 }} />
+<<<<<<< HEAD
+                  {!collapsed && <span className="truncate leading-snug pb-[1px]">{item.title}</span>}
+=======
                   {!collapsed && <span className="truncate leading-none">{item.title}</span>}
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
                 </NavLink>
               );
             })}
@@ -482,7 +535,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         )}
 
         {/* ---- MAIN CONTENT AREA ---- warm linen workspace */}
+<<<<<<< HEAD
+        <main className="flex-1 overflow-y-auto min-h-[calc(100vh-48px)]" style={{ backgroundColor: 'var(--workspace-bg, #F5F0DC)' }}>
+=======
         <main className="flex-1 overflow-y-auto min-h-[calc(100vh-64px)]" style={{ backgroundColor: 'var(--workspace-bg, #FEFCCF)' }}>
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
           {children}
         </main>
 

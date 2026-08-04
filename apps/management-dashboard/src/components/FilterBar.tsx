@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
+import { Filter, RotateCcw } from 'lucide-react';
+=======
 import { RotateCcw } from 'lucide-react';
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 import { useFilters } from '../context/FilterContext';
 import { usePermissions } from '@cbl/auth';
 import { DEPARTMENTS } from '../config/constants';
@@ -50,11 +54,22 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   };
 
   return (
+<<<<<<< HEAD
+    <div className={`flex items-center flex-wrap gap-2 ${className}`}>
+      <span className="flex items-center gap-1.5 text-[12px] font-medium text-[#6B7280] shrink-0 select-none">
+        <Filter className="h-3.5 w-3.5" />
+        Filter:
+      </span>
+
+      {showYear && (
+        <div className="relative">
+=======
     <div className={`flex items-end flex-wrap gap-3 bg-[#F8F6C9] px-4 py-3 rounded-lg shadow-sm ${className}`}>
 
       {showYear && (
         <div className="relative flex flex-col gap-1">
           <label className="text-[10px] font-bold tracking-widest text-[#5A413D]">YEAR</label>
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
           <select
             value={filters.year}
             onChange={e => setFilter('year', e.target.value)}
@@ -69,8 +84,12 @@ export const FilterBar: React.FC<FilterBarProps> = ({
       )}
 
       {showDepartment && (
+<<<<<<< HEAD
+        <div className="relative">
+=======
         <div className="relative flex flex-col gap-1">
           <label className="text-[10px] font-bold tracking-widest text-[#5A413D]">DEPARTMENT</label>
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
           <select
             value={filters.department}
             onChange={e => setFilter('department', e.target.value)}
@@ -84,8 +103,12 @@ export const FilterBar: React.FC<FilterBarProps> = ({
       )}
 
       {showStatus && (
+<<<<<<< HEAD
+        <div className="relative">
+=======
         <div className="relative flex flex-col gap-1">
           <label className="text-[10px] font-bold tracking-widest text-[#5A413D]">STATUS</label>
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
           <select
             value={filters.status}
             onChange={e => setFilter('status', e.target.value)}
@@ -103,7 +126,10 @@ export const FilterBar: React.FC<FilterBarProps> = ({
 
       {showDateRange && (
         <>
+<<<<<<< HEAD
+=======
           <label className="text-[10px] font-bold tracking-widest text-[#5A413D] self-start pt-1">DATE RANGE</label>
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
           <input
             type="date"
             value={filters.fromDate}

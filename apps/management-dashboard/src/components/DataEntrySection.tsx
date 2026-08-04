@@ -343,6 +343,8 @@ const IncidentLogWorkspace = ({ schema }: { schema: SectionConfig }) => {
   );
 };
 
+<<<<<<< HEAD
+=======
 const NearMissWorkspace = ({ schema }: { schema: SectionConfig }) => {
   const { data: nearMisses, loading, fetchAll, createRecord } = useModuleData(schema.id);
   const [formData, setFormData] = useState<any>({});
@@ -445,6 +447,7 @@ const NearMissWorkspace = ({ schema }: { schema: SectionConfig }) => {
     </Layout>
   );
 };
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 
 const MergedAuditInspectionWorkspace = ({ activeSchema }: { activeSchema: SectionConfig }) => {
   const audit = useModuleData('audit-management');
@@ -481,15 +484,25 @@ const MergedAuditInspectionWorkspace = ({ activeSchema }: { activeSchema: Sectio
       </ContextHeader>
 
       <div className="p-6">
+<<<<<<< HEAD
+        <div className={`${CARD} mt-4 overflow-hidden`}>
+          <div className="max-h-[calc(100vh-260px)] overflow-auto">
+              <table className="w-full border-collapse">
+=======
         <div className={`${CARD} overflow-hidden`}>
           <div className="max-h-[calc(100vh-260px)] overflow-auto">
             <table className="w-full border-collapse">
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
               <thead className="sticky top-0 z-20 bg-white">
                 <tr className="bg-white">
                   {schemaForTable.columns.filter(c => !c.hideFromForm).map(col => (
                     <th
                       key={col.key}
+<<<<<<< HEAD
+                      className="border-b border-[#E5E7EB] bg-white px-4 pt-5 pb-3 text-left text-[11px] font-bold uppercase tracking-wider text-[#374151] whitespace-nowrap"
+=======
                       className="border-b border-[#E5E7EB] bg-white px-4 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-[#374151] whitespace-nowrap"
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
                     >
                       {col.label}
                     </th>
@@ -544,9 +557,13 @@ export const DataEntrySection: React.FC<DataEntrySectionProps> = ({ schema }) =>
     return <IncidentLogWorkspace schema={schema} />;
   }
   
+<<<<<<< HEAD
+
+=======
   if (schema.id === 'near-miss') {
     return <NearMissWorkspace schema={schema} />;
   }
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 
   const { data: entries, loading, fetchAll, createRecord, updateRecord, deleteRecord } = useModuleData(schema.id);
   const { user } = useAuth();
@@ -898,6 +915,11 @@ export const DataEntrySection: React.FC<DataEntrySectionProps> = ({ schema }) =>
     );
   };
 
+<<<<<<< HEAD
+  const entityName = schema.title.replace('Reporting', '').trim();
+
+=======
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
   const renderHazardWorkspace = () => (
     <Layout>
       <ContextHeader
@@ -912,7 +934,11 @@ export const DataEntrySection: React.FC<DataEntrySectionProps> = ({ schema }) =>
             variant: 'outlined' as const,
           }] : []),
           ...(canAddData() ? [{
+<<<<<<< HEAD
+            label: `Add ${entityName}`,
+=======
             label: 'Add Hazard',
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
             icon: <Plus />,
             onClick: () => setIsAddModalOpen(true),
             variant: 'primary' as const,
@@ -925,7 +951,11 @@ export const DataEntrySection: React.FC<DataEntrySectionProps> = ({ schema }) =>
             <PanelRightOpen className="h-3.5 w-3.5" /> HSE Review
           </button>
           <button onClick={() => setShowCloseHazard(true)} className="h-8 px-3 text-[12px] font-medium rounded-md border border-[#CB0017]/30 bg-[#FFF7F7] text-[#CB0017] hover:bg-[#FDECEC] inline-flex items-center gap-1.5">
+<<<<<<< HEAD
+            <CheckCircle2 className="h-3.5 w-3.5" /> Close {entityName}
+=======
             <CheckCircle2 className="h-3.5 w-3.5" /> Close Hazard
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
           </button>
           <button onClick={() => setShowMobileFilters(true)} className="md:hidden h-8 px-3 text-[12px] font-medium rounded-md border border-[#DEDEDE] bg-white text-[#374151] inline-flex items-center gap-1.5">
             <Filter className="h-3.5 w-3.5" /> Filters
@@ -936,7 +966,11 @@ export const DataEntrySection: React.FC<DataEntrySectionProps> = ({ schema }) =>
       <div className="p-6 space-y-5">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {[
+<<<<<<< HEAD
+            { title: `${entityName} Assigned`, value: '12', tone: 'warning' },
+=======
             { title: 'Hazard Assigned', value: '12', tone: 'warning' },
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
             { title: 'Submitted for Review', value: '4', tone: 'neutral' },
             { title: 'Closed This Month', value: '9', tone: 'success' },
           ].map(card => (
@@ -949,9 +983,15 @@ export const DataEntrySection: React.FC<DataEntrySectionProps> = ({ schema }) =>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {[
+<<<<<<< HEAD
+            { title: `High Risk ${entityName} Assigned`, detail: 'Click to highlight the corresponding record.' },
+            { title: `${entityName} Closed`, detail: 'Closing proof will be reviewed in the confirmation dialog.' },
+            { title: `${entityName} Approved`, detail: 'Mock approval workflow entry.' },
+=======
             { title: 'High Risk Hazard Assigned', detail: 'Click to highlight the corresponding record.' },
             { title: 'Hazard Closed', detail: 'Closing proof will be reviewed in the confirmation dialog.' },
             { title: 'Hazard Approved', detail: 'Mock approval workflow entry.' },
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
           ].map(card => (
             <button
               key={card.title}
@@ -973,7 +1013,11 @@ export const DataEntrySection: React.FC<DataEntrySectionProps> = ({ schema }) =>
           <div className="flex items-center justify-between gap-3 border-b border-[#F0F0F0] px-4 py-3">
             <div className="flex items-center gap-2">
               <LayoutGrid className="h-4 w-4 text-[#CB0017]" />
+<<<<<<< HEAD
+              <h3 className="text-[12px] font-bold text-[#374151] uppercase tracking-wider">{entityName} Register</h3>
+=======
               <h3 className="text-[12px] font-bold text-[#374151] uppercase tracking-wider">Hazard Register</h3>
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
             </div>
             <div className="flex items-center gap-2">
               <button onClick={() => setDensity('compact')} className={`h-8 px-3 text-[12px] rounded-md border ${density === 'compact' ? 'bg-[#CB0017] text-white border-[#CB0017]' : 'bg-white text-[#374151] border-[#DEDEDE]'}`}>Compact</button>

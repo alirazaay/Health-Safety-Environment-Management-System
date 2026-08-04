@@ -1,5 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+<<<<<<< HEAD
+import sharedConfig from "@cbl/ui/tailwind.config.js";
+=======
 const sharedConfig = { theme: { extend: {} } };
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 
 export default {
   ...sharedConfig,

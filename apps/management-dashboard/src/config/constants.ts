@@ -1,9 +1,25 @@
+<<<<<<< HEAD
+export const DEPARTMENTS = [
+  'PROD',
+  'QA',
+  'PROJ',
+  'STR',
+  'ADMIN',
+  'IT',
+  'ENG',
+  'HSE',
+  'QC',
+  'NPD',
+  'ESD'
+];
+=======
 export const DEPARTMENTS: string[] = [];
 
 export const setDepartments = (departments: string[]) => {
   DEPARTMENTS.length = 0;
   DEPARTMENTS.push(...departments);
 };
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 
 export const INCIDENT_CATEGORIES = [
   'First Aid',

@@ -93,11 +93,19 @@ The UI is robust and connected to the live integration layer. Remaining work is 
 | Icons | `lucide-react` |
 | Charts | `recharts` |
 | Auth | Microsoft Authentication Library (`@azure/msal-react`) |
+<<<<<<< HEAD
+| Architecture | Turborepo Monorepo (`apps/management-dashboard`, `packages/api`, `packages/auth`, `packages/ui`) |
+
+### Frontend API Integration
+
+The frontend API boundary is implemented in `frontend/packages/api/src`:
+=======
 | Architecture | Turborepo Monorepo (`apps/*`, `packages/*`, `database/`, `docker/`, `docs/`) |
 
 ### Frontend API Integration
 
 The shared API boundary is implemented in `packages/api/src`:
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 
 | Client | Responsibility |
 |---|---|
@@ -193,11 +201,19 @@ The frontend relies on Microsoft SSO via popup, which will yield an email. It th
 ## 🛠️ Setup Instructions (Frontend)
 
 1. Clone the repository.
+<<<<<<< HEAD
+2. Install frontend dependencies from the `frontend` workspace:
+   ```bash
+   cd frontend
+   npm install
+   ```
+3. Create a `.env` file in `frontend/apps/management-dashboard/`:
+=======
 2. Install workspace dependencies from the repository root:
    ```bash
    npm install
    ```
-3. Create `apps/management-dashboard/.env`:
+3. Create a `.env` file in the repository root:
    ```env
    VITE_MSAL_CLIENT_ID=your_client_id
    VITE_MSAL_TENANT_ID=your_tenant_id

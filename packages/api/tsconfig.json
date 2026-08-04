@@ -1,1 +1,16 @@
+<<<<<<< HEAD
+{
+  "extends": "@cbl/tsconfig/react.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
+=======
 { "extends": "../../tsconfig.base.json", "compilerOptions": { "jsx": "react-jsx" }, "include": ["src"] }
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
