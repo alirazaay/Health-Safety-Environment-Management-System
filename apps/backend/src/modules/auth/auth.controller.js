@@ -7,6 +7,21 @@ const { HTTP_STATUS } = require('../../shared/constants/httpStatus');
 const { MESSAGES } = require('../../shared/constants/messages');
 const config = require('../../database/config');
 
+const cookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'strict',
+};
+
+const setTokenCookies = (res, tokens) => {
+  if (tokens.accessToken) {
+    res.cookie('accessToken', tokens.accessToken, { ...cookieOptions, maxAge: 15 * 60 * 1000 }); // 15 mins
+  }
+  if (tokens.refreshToken) {
+    res.cookie('refreshToken', tokens.refreshToken, { ...cookieOptions, maxAge: 7 * 24 * 60 * 60 * 1000 }); // 7 days
+  }
+};
+
 /**
  * @swagger
  * tags:
@@ -48,16 +63,25 @@ class AuthController {
     const { email, password } = req.body;
     const meta = { ip: req.ip, userAgent: req.headers['user-agent'] };
     const { user, tokens } = await authService.login(email, password, meta);
+    
+    setTokenCookies(res, tokens);
+    
     res.status(HTTP_STATUS.OK).json(
-      ApiResponse.success({ user, tokens }, MESSAGES.LOGIN_SUCCESS),
+      ApiResponse.success({ user }, MESSAGES.LOGIN_SUCCESS),
     );
   });
 
   refreshToken = asyncHandler(async (req, res) => {
-    const { refreshToken } = req.body;
+    const refreshToken = req.cookies?.refreshToken || req.body.refreshToken;
+    if (!refreshToken) {
+      return res.status(HTTP_STATUS.UNAUTHORIZED).json(ApiResponse.error('Refresh token required'));
+    }
     const { tokens } = await authService.refreshToken(refreshToken);
+    
+    setTokenCookies(res, tokens);
+
     res.status(HTTP_STATUS.OK).json(
-      ApiResponse.success({ tokens }, MESSAGES.TOKEN_REFRESHED),
+      ApiResponse.success(null, MESSAGES.TOKEN_REFRESHED),
     );
   });
 
@@ -96,14 +120,15 @@ class AuthController {
     const result = await authService.ssoLogin(email, meta);
 
     if (result) {
+      setTokenCookies(res, result.tokens);
+      
       res.status(HTTP_STATUS.OK).json({
         success: true,
         message: 'User authorized and logged in via SSO',
         data: { 
           authorized: true, 
           email,
-          user: result.user,
-          tokens: result.tokens
+          user: result.user
         }
       });
     } else {
@@ -128,6 +153,8 @@ class AuthController {
 
   logout = asyncHandler(async (req, res) => {
     await authService.logout(req.user.id);
+    res.clearCookie('accessToken');
+    res.clearCookie('refreshToken');
     res.status(HTTP_STATUS.OK).json(ApiResponse.success(null, MESSAGES.LOGOUT_SUCCESS));
   });
 

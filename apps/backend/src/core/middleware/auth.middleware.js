@@ -13,12 +13,16 @@ const TokenType = require('../../shared/enums/TokenType');
  */
 const authenticate = async (req, res, next) => {
   try {
+    let token = req.cookies?.accessToken;
     const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    
+    if (!token && authHeader && authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(' ')[1];
+    }
+    
+    if (!token) {
       throw ApiError.unauthorized(MESSAGES.TOKEN_MISSING);
     }
-
-    const token = authHeader.split(' ')[1];
     const payload = verifyToken(token, TokenType.ACCESS);
 
     const user = await userRepository.findByIdWithRole(payload.sub);
@@ -37,9 +41,14 @@ const authenticate = async (req, res, next) => {
  */
 const optionalAuth = async (req, res, next) => {
   try {
+    let token = req.cookies?.accessToken;
     const authHeader = req.headers.authorization;
-    if (authHeader && authHeader.startsWith('Bearer ')) {
-      const token = authHeader.split(' ')[1];
+    
+    if (!token && authHeader && authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(' ')[1];
+    }
+    
+    if (token) {
       const payload = verifyToken(token, TokenType.ACCESS);
       req.user = await userRepository.findByIdWithRole(payload.sub);
     }

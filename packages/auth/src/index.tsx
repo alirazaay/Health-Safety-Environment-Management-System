@@ -11,34 +11,33 @@ export interface AuthUser {
 
 interface AuthState {
   user: AuthUser | null;
-  token: string | null;
-  setSession: (user: AuthUser, token: string) => void;
+  setSession: (user: AuthUser) => void;
   clearSession: () => void;
   hasRole: (role: string | string[]) => boolean;
 }
 
 const STORAGE_KEY = 'cbl-hse-auth';
 
-const readSession = (): Pick<AuthState, 'user' | 'token'> => {
+const readSession = (): Pick<AuthState, 'user'> => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { user: null, token: null };
+    if (!raw) return { user: null };
     return JSON.parse(raw);
   } catch {
-    return { user: null, token: null };
+    return { user: null };
   }
 };
 
 export const useAuthStore = create<AuthState>((set, get) => ({
   ...readSession(),
-  setSession: (user, token) => {
-    const session = { user, token };
+  setSession: (user) => {
+    const session = { user };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
     set(session);
   },
   clearSession: () => {
     localStorage.removeItem(STORAGE_KEY);
-    set({ user: null, token: null });
+    set({ user: null });
   },
   hasRole: (role) => {
     const roles = Array.isArray(role) ? role : [role];
@@ -63,16 +62,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const clearSession = useAuthStore((state) => state.clearSession);
 
   const login = () => {
-    setSession(
-      {
-        id: 'demo-admin',
-        name: 'Admin User',
-        email: 'admin@cbl.com',
-        role: 'ADMIN',
-        department: 'All',
-      },
-      'local-demo-token',
-    );
+    setSession({
+      id: 'demo-admin',
+      name: 'Admin User',
+      email: 'admin@cbl.com',
+      role: 'ADMIN',
+      department: 'All',
+    });
   };
 
   return (
