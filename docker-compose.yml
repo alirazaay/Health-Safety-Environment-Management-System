@@ -3,7 +3,11 @@ version: '3.8'
 services:
   backend:
     build:
+<<<<<<< HEAD
       context: ./backend
+=======
+      context: ./apps/backend
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
@@ -18,13 +22,22 @@ services:
       - mysql
       - redis
     volumes:
+<<<<<<< HEAD
       - ./backend:/app
+=======
+      - ./apps/backend:/app
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
       - /app/node_modules
 
   frontend:
     build:
+<<<<<<< HEAD
       context: ./frontend
       dockerfile: Dockerfile
+=======
+      context: .
+      dockerfile: docker/dashboard.Dockerfile
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     ports:
       - "5173:5173"
     environment:
@@ -32,7 +45,11 @@ services:
     depends_on:
       - backend
     volumes:
+<<<<<<< HEAD
       - ./frontend:/app
+=======
+      - .:/app
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
       - /app/node_modules
 
   mysql:

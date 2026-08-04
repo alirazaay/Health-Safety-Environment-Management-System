@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "extends": "@cbl/tsconfig/react.json",
   "compilerOptions": {
@@ -10,3 +11,6 @@
   },
   "include": ["src/**/*"]
 }
+=======
+{ "extends": "../../tsconfig.base.json", "compilerOptions": { "jsx": "react-jsx", "lib": ["ES2022", "DOM"] }, "include": ["src"] }
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41

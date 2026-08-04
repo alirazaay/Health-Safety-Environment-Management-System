@@ -1,4 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+<<<<<<< HEAD
+=======
+import { useState, useEffect } from 'react';
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 import { ProtectedRoute, useAuth } from '@cbl/auth';
 import { Dashboard } from './pages/Dashboard';
 
@@ -7,7 +11,13 @@ import { Settings } from './pages/Settings';
 import { Reports } from './pages/Reports';
 import { Profile } from './pages/Profile';
 import { DataEntrySection } from './components/DataEntrySection';
+<<<<<<< HEAD
 import { ALL_SECTIONS } from './config/sectionSchemas';
+=======
+import { ALL_SECTIONS, setDepartmentOptions } from './config/sectionSchemas';
+import { setDepartments } from './config/constants';
+import { apiClient } from '@cbl/api';
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 import { FilterProvider } from './context/FilterContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { Card, CardHeader, CardTitle, CardContent, Button } from '@cbl/ui';
@@ -55,6 +65,38 @@ const LoginPage = () => {
 };
 
 function App() {
+<<<<<<< HEAD
+=======
+  const { isAuthenticated } = useAuth();
+  const [isInitializing, setIsInitializing] = useState(true);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setIsInitializing(false);
+      return;
+    }
+
+    const initApp = async () => {
+      try {
+        const response = await apiClient.get('/departments');
+        const depts = response.data?.data?.map((d: any) => d.name) || [];
+        setDepartments(depts);
+        setDepartmentOptions(depts);
+      } catch (err) {
+        console.error('Failed to load departments', err);
+      } finally {
+        setIsInitializing(false);
+      }
+    };
+
+    initApp();
+  }, [isAuthenticated]);
+
+  if (isInitializing) {
+    return <div className="min-h-screen flex items-center justify-center bg-background"><div className="w-8 h-8 border-4 border-[#CB0017] border-t-transparent rounded-full animate-spin"></div></div>;
+  }
+
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
   return (
     <ThemeProvider>
       <FilterProvider>

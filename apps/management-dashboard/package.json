@@ -6,9 +6,17 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc -b && vite build",
+<<<<<<< HEAD
     "lint": "oxlint",
     "preview": "vite preview"
   },
+=======
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
   "dependencies": {
     "@cbl/api": "*",
     "@cbl/auth": "*",
@@ -30,7 +38,11 @@
     "oxlint": "^1.71.0",
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.4",
+<<<<<<< HEAD
     "typescript": "~6.0.2",
+=======
+    "typescript": "^5.9.3",
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     "vite": "^8.1.1"
   }
 }

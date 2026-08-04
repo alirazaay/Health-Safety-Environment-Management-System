@@ -1,5 +1,6 @@
 {
   "name": "@cbl/tsconfig",
+<<<<<<< HEAD
   "version": "0.0.0",
   "private": true,
   "files": [
@@ -7,4 +8,10 @@
     "react.json",
     "node.json"
   ]
+=======
+  "version": "1.0.0",
+  "private": true,
+  "main": "base.json",
+  "scripts": { "build": "echo tsconfig-build-ready", "typecheck": "echo tsconfig-typecheck-ready", "lint": "echo tsconfig-lint-skipped", "test": "echo tsconfig-tests-pending" }
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 }

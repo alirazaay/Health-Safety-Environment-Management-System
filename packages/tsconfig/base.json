@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "composite": false,
     "declaration": true,
     "declarationMap": true,
@@ -15,4 +16,12 @@
     "strict": true
   },
   "exclude": ["node_modules"]
+=======
+    "target": "ES2022",
+    "strict": true,
+    "skipLibCheck": true,
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true
+  }
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 }

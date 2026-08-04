@@ -1,5 +1,8 @@
 import {
+<<<<<<< HEAD
   DEPARTMENTS,
+=======
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
   INCIDENT_CATEGORIES,
   HAZARD_CATEGORIES,
   ROOT_CAUSES,
@@ -50,7 +53,11 @@ export const hazardReportingSchema: SectionConfig = {
         return d.toLocaleString('default', { month: 'short', year: 'numeric' });
       }
     },
+<<<<<<< HEAD
     { key: 'department_id', label: 'Department', type: 'select', options: DEPARTMENTS, required: true, section: 'Basic Information' },
+=======
+    { key: 'department_id', label: 'Department', type: 'select', options: [], required: true, section: 'Basic Information' },
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     { key: 'location', label: 'Location', type: 'text', required: true, section: 'Basic Information' },
     { key: 'originator', label: 'Reported By', type: 'text', required: true, section: 'Basic Information' },
     { key: 'hazard_category_id', label: 'Hazard Category', type: 'select', options: HAZARD_CATEGORIES, required: true, section: 'Hazard Details' },
@@ -93,11 +100,16 @@ export const nearMissSchema: SectionConfig = {
         return d.toLocaleString('default', { month: 'short', year: 'numeric' });
       }
     },
+<<<<<<< HEAD
     { key: 'department_id', label: 'Department', type: 'select', options: DEPARTMENTS, required: true, section: 'Basic Information' },
+=======
+    { key: 'department_id', label: 'Department', type: 'select', options: [], required: true, section: 'Basic Information' },
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     { key: 'reported_by', label: 'Reported By', type: 'text', required: true, section: 'Basic Information' },
     { key: 'designation', label: 'Designation', type: 'text', required: true, section: 'Basic Information' },
     { key: 'affected_person', label: 'Affected Person Name', type: 'text', section: 'Basic Information' },
     { key: 'affected_designation', label: 'Affected Person Designation', type: 'text', section: 'Basic Information' },
+<<<<<<< HEAD
     { key: 'time', label: 'Time (24 Hrs)', type: 'time', required: true, section: 'Basic Information' },
     { key: 'location', label: 'Area / Location', type: 'text', required: true, section: 'Basic Information' },
     { key: 'details', label: 'Details of the Near Miss', type: 'textarea', required: true, section: 'Near Miss Details' },
@@ -107,6 +119,20 @@ export const nearMissSchema: SectionConfig = {
     { key: 'reported_in_hazard', label: 'Reported in HAZARD (Y/N)', type: 'select', options: ['Yes', 'No'], section: 'Investigation' },
     { key: 'status', label: 'Status (Open/Close)', type: 'select', options: ['Open', 'Closed'], section: 'Investigation' },
     { key: 'remarks', label: 'Remarks', type: 'textarea', section: 'Investigation' },
+=======
+    { key: 'time', label: 'Date & Time', type: 'datetime', required: true, section: 'Basic Information' },
+    { key: 'location', label: 'Area / Location', type: 'text', required: true, section: 'Basic Information' },
+    { key: 'details', label: 'Details of the Near Miss', type: 'textarea', required: true, section: 'Near Miss Details' },
+    { key: 'preventive_action', label: 'Preventive Action Suggestion', type: 'textarea', section: 'Corrective Actions' },
+    { key: 'responsible_person', label: 'Responsible Person', type: 'text', section: 'Corrective Actions' },
+    { key: 'investigation_required', label: 'Further Investigation Required', type: 'select', options: ['Yes', 'No'], section: 'Investigation' },
+    { key: 'root_cause_analysis', label: 'Root Cause Analysis', type: 'textarea', section: 'Investigation' },
+    { key: 'investigation_notes', label: 'Investigation Notes', type: 'textarea', section: 'Investigation' },
+    { key: 'investigation_officer', label: 'Investigation Officer', type: 'text', section: 'Investigation' },
+    { key: 'reported_in_hazard', label: 'Reported in Hazard', type: 'select', options: ['Yes', 'No'], section: 'Investigation' },
+    { key: 'status_id', label: 'Status', type: 'select', options: STATUSES, required: true, section: 'Assignment' },
+    { key: 'remarks', label: 'Remarks', type: 'textarea', section: 'Assignment' }
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
   ]
 };
 
@@ -124,7 +150,11 @@ export const incidentLogSchema: SectionConfig = {
     { key: 'area_manager', label: 'Area Manager', type: 'text', required: true, section: 'Basic Information' },
     { key: 'gender', label: 'Gender Wise', type: 'select', options: ['Male', 'Female', 'Other'], section: 'Basic Information' },
     { key: 'location', label: 'Location', type: 'text', required: true, section: 'Basic Information' },
+<<<<<<< HEAD
     { key: 'department_id', label: 'Department', type: 'select', options: DEPARTMENTS, required: true, section: 'Basic Information' },
+=======
+    { key: 'department_id', label: 'Department', type: 'select', options: [], required: true, section: 'Basic Information' },
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     { key: 'incident_category_id', label: 'Incident Category', type: 'select', options: INCIDENT_CATEGORIES, required: true, section: 'Incident Details' },
     { key: 'root_cause_id', label: 'Root Cause', type: 'select', options: ROOT_CAUSES, required: true, section: 'Incident Details' },
     { key: 'action_items', label: 'Action Items', type: 'textarea', section: 'Investigation' },
@@ -166,7 +196,11 @@ export const trainingRecordsSchema: SectionConfig = {
   columns: [
     { key: 'date', label: 'Date', type: 'date', required: true, section: 'Training Details' },
     { key: 'training_type', label: 'Training Type', type: 'select', options: ['Internal', 'External', 'Toolbox Talk', 'Safety Briefing', 'Fire Drill', 'Orientation'], required: true, section: 'Training Details' },
+<<<<<<< HEAD
     { key: 'department_id', label: 'Department', type: 'select', options: DEPARTMENTS, required: true, section: 'Training Details' },
+=======
+    { key: 'department_id', label: 'Department', type: 'select', options: [], required: true, section: 'Training Details' },
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     { key: 'trainer', label: 'Trainer', type: 'text', required: true, section: 'Training Details' },
     { key: 'venue', label: 'Venue', type: 'text', section: 'Training Details' },
     { key: 'topic', label: 'Topics Delivered', type: 'textarea', required: true, section: 'Training Details' },
@@ -213,7 +247,11 @@ export const auditManagementSchema: SectionConfig = {
   icon: 'ClipboardList',
   columns: [
     { key: 'title', label: 'Audit Title', type: 'text', required: true, section: 'Audit' },
+<<<<<<< HEAD
     { key: 'department_id', label: 'Department', type: 'select', options: DEPARTMENTS, section: 'Audit' },
+=======
+    { key: 'department_id', label: 'Department', type: 'select', options: [], section: 'Audit' },
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     { key: 'auditor', label: 'Auditor', type: 'text', required: true, section: 'Audit' },
     { key: 'audit_date', label: 'Audit Date', type: 'date', required: true, section: 'Audit' },
     { key: 'findings', label: 'Findings / Notes', type: 'textarea', section: 'Audit' },
@@ -228,7 +266,11 @@ export const inspectionRecordsSchema: SectionConfig = {
   accentColor: '#F59E0B',
   icon: 'CheckSquare',
   columns: [
+<<<<<<< HEAD
     { key: 'department_id', label: 'Department', type: 'select', options: DEPARTMENTS, section: 'Inspection' },
+=======
+    { key: 'department_id', label: 'Department', type: 'select', options: [], section: 'Inspection' },
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     { key: 'inspector', label: 'Inspector', type: 'text', required: true, section: 'Inspection' },
     { key: 'inspection_date', label: 'Inspection Date', type: 'date', required: true, section: 'Inspection' },
     { key: 'observations', label: 'Observations', type: 'textarea', section: 'Inspection' }
@@ -244,3 +286,15 @@ export const ALL_SECTIONS = [
   auditManagementSchema,
   inspectionRecordsSchema
 ];
+<<<<<<< HEAD
+=======
+
+export const setDepartmentOptions = (departments: string[]) => {
+  ALL_SECTIONS.forEach(section => {
+    const deptCol = section.columns.find(col => col.key === 'department_id');
+    if (deptCol) {
+      deptCol.options = departments;
+    }
+  });
+};
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41

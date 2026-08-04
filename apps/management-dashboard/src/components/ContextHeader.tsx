@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom';
 // ============================================================
 // ContextHeader — SAP Fiori page header pattern
 // Breadcrumb + Page Title + Actions
+<<<<<<< HEAD
 // Sticky below the 48px shell header (top-12)
+=======
+// Sticky below the 64px shell header (top-16)
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 // ============================================================
 
 export interface ContextAction {
@@ -41,7 +45,11 @@ export const ContextHeader: React.FC<ContextHeaderProps> = ({
   children,
 }) => {
   return (
+<<<<<<< HEAD
     <div className="bg-white border-b border-[#E0E0E0] px-6 py-4 relative z-30 print-hide">
+=======
+    <div className="bg-[#FEFCCF] border-b border-[#E2BFB9] px-8 py-5 sticky top-16 z-30 print-hide">
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
       {/* Breadcrumb navigation */}
       {breadcrumbs.length > 0 && (
         <nav
@@ -75,7 +83,11 @@ export const ContextHeader: React.FC<ContextHeaderProps> = ({
       {/* Title row */}
       <div className="flex items-center justify-between gap-4 min-h-[36px]">
         <div className="min-w-0">
+<<<<<<< HEAD
           <h1 className="text-[24px] font-bold text-[#2C1810] leading-tight truncate tracking-tight">
+=======
+          <h1 className="text-[28px] font-semibold text-[#570000] leading-tight truncate tracking-tight">
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
             {title}
           </h1>
           {subtitle && (
@@ -112,7 +124,11 @@ export const ContextHeader: React.FC<ContextHeaderProps> = ({
 
       {/* Sub-content: filter bar, tabs, secondary info, etc. */}
       {children && (
+<<<<<<< HEAD
         <div className="mt-3 pt-3 border-t border-[#F0F0F0]">
+=======
+        <div className="mt-4 pt-4 border-t border-[#E2BFB9]">
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
           {children}
         </div>
       )}

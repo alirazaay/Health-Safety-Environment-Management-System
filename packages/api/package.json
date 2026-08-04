@@ -1,5 +1,6 @@
 {
   "name": "@cbl/api",
+<<<<<<< HEAD
   "version": "0.0.0",
   "private": true,
   "main": "src/index.ts",
@@ -15,4 +16,13 @@
     "@cbl/tsconfig": "*",
     "typescript": "^5.5.0"
   }
+=======
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": { ".": "./src/index.ts", "./uploadClient": "./src/uploadClient.ts" },
+  "scripts": { "build": "tsc -p tsconfig.json", "typecheck": "tsc -p tsconfig.json", "lint": "echo api-lint-skipped", "test": "echo api-tests-pending" },
+  "dependencies": { "@cbl/types": "*", "@cbl/utils": "*", "axios": "^1.18.1" }
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 }

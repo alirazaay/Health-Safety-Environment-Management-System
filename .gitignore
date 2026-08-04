@@ -1,6 +1,14 @@
 # ─── Dependencies ───────────────────────────
 node_modules/
 .npm
+<<<<<<< HEAD
+=======
+**/node_modules/
+**/.turbo/
+**/dist/
+**/build/
+*.tsbuildinfo
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 
 # ─── Environment ────────────────────────────
 .env

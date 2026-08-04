@@ -1,5 +1,6 @@
 {
   "name": "@cbl/eslint-config",
+<<<<<<< HEAD
   "version": "0.0.0",
   "private": true,
   "files": [
@@ -9,4 +10,10 @@
   "peerDependencies": {
     "eslint": "^8.0.0 || ^9.0.0"
   }
+=======
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": { "build": "echo eslint-config-build-ready", "typecheck": "echo eslint-config-typecheck-ready", "lint": "echo eslint-config-lint-ready", "test": "echo eslint-config-tests-pending" }
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 }

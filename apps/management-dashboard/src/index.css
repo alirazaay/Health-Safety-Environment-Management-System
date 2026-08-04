@@ -11,8 +11,13 @@
        ============================================ */
 
     /* Shell Workspace Background */
+<<<<<<< HEAD
     --background: 42 20% 95%;      /* #F5F0DC Warm Linen */
     --background-alt: 220 14% 96%; /* #F3F4F6 */
+=======
+    --background: 60 96% 90%;      /* #FEFCCF Reference surface */
+    --background-alt: 42 20% 95%;  /* warm linen */
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
 
     /* Card / Panel Surface (pure white) */
     --card: 0 0% 100%;             /* #FFFFFF */
@@ -22,7 +27,11 @@
     --popover-foreground: 0 4% 10%;
 
     /* CBL Primary Brand — Crimson Red */
+<<<<<<< HEAD
     --primary: 353 100% 40%;       /* #CB0017 */
+=======
+    --primary: 0 100% 17%;         /* #570000 Reference oxblood */
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     --primary-foreground: 0 0% 100%;
 
     /* Secondary — Charcoal (shell header) */
@@ -34,6 +43,7 @@
     --muted-foreground: 220 9% 46%;/* #6B7280 */
 
     /* Accent — Very light primary tint for active/hover states */
+<<<<<<< HEAD
     --accent: 353 100% 97%;        /* #FFF7F7 */
     --accent-foreground: 353 100% 35%;
 
@@ -42,6 +52,16 @@
 
     /* Borders — Thin, SAP-standard */
     --border: 0 0% 87%;            /* #DEDEDE */
+=======
+    --accent: 48 100% 50%;         /* #FFBF00 Reference gold */
+    --accent-foreground: 0 100% 17%;
+
+    /* Text — Charcoal */
+    --foreground: 60 80% 6%;       /* #1D1D03 */
+
+    /* Borders — Thin, SAP-standard */
+    --border: 16 34% 80%;          /* #E2BFB9 */
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     --input: 0 0% 87%;
     --ring: 353 100% 40%;
 
@@ -73,8 +93,13 @@
        ============================================ */
 
     /* Sidebar — Deep maroon from Stitch design */
+<<<<<<< HEAD
     --sidebar-bg: #7B1010;
     --sidebar-active-bg: rgba(255,255,255,0.15);
+=======
+    --sidebar-bg: #570000;
+    --sidebar-active-bg: #800000;
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
     --sidebar-hover-bg: rgba(255,255,255,0.08);
     --sidebar-text: rgba(255,255,255,0.85);
     --sidebar-text-muted: rgba(255,255,255,0.50);
@@ -82,12 +107,21 @@
     --sidebar-group-label: rgba(255,255,255,0.35);
 
     /* Page workspace — warm linen from Stitch design */
+<<<<<<< HEAD
     --workspace-bg: #F5F0DC;
 
     /* Brand maroon — primary buttons, active accents */
     --brand-maroon: #7B1010;
     --brand-maroon-hover: #5E0C0C;
     --brand-maroon-light: rgba(123,16,16,0.08);
+=======
+    --workspace-bg: #FEFCCF;
+
+    /* Brand maroon — primary buttons, active accents */
+    --brand-maroon: #570000;
+    --brand-maroon-hover: #800000;
+    --brand-maroon-light: rgba(87,0,0,0.08);
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
   }
 
   .dark {

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD
 
 @layer base {
   :root {
@@ -82,3 +83,5 @@
     @apply bg-white/10 backdrop-blur-md border border-white/20 dark:bg-black/10 dark:border-white/10;
   }
 }
+=======
+>>>>>>> d030ebd4e6389b4507a011215f9a73cb43997b41
